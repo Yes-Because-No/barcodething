@@ -56,5 +56,19 @@ class CameraCallbacks:
             quality=None,
             orientation=None
         ), frame)
+    
+    @staticmethod
+    def to_web_streamable(frame: cv2.typing.MatLike)-> bytes:
+    
+        bytes_img = cv2.imencode(".jpg", frame)[1].tobytes()
+
+        return (b'--frame\r\n'
+            b'Content-Type: image/jpeg\r\n\r\n'
+            +bytes_img+b'\r\n'
+        )
+    
+    
+            
+
 
 
