@@ -1,5 +1,5 @@
 import sqlite3
-from dbconnection import DatabaseConnection
+from app.db.dbconnection import DatabaseConnection
 
 def create_tables():
     with DatabaseConnection("project.db") as conn:
@@ -19,9 +19,12 @@ def create_tables():
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS attendance (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date TEXT,
+                mode TEXT,
                 school_id INTEGER,
                 FOREIGN KEY (school_id) REFERENCES users(id)        
         )
         """)
 
         conn.commit()
+create_tables()

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
-from services.scanner import Camera, CameraCallbacks
+from app.services.scanner import Camera, CameraCallbacks
 import cv2
 import asyncio
 import numpy as np
